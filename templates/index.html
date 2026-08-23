@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gemini</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="chat-container">
+        {% for message in history %}
+            {% if message.sender == 'You' %}
+                <div class="message user-message">
+                    <strong>You:</strong> {{ message.text }}
+                </div>
+            {% else %}
+                <div class="message gemini-message">
+                    <strong>Gemini:</strong> {{ message.text | safe }}
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+
+    <h1>Gemini</h1>
+    <form method="post" action="/">
+        <input type="text" autofocus autocomplete="off" placeholder="Enter your prompt" name="name">
+        <button type="submit">-></button>
+    </form>
+</body>
+</html>
