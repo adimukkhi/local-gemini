@@ -5,9 +5,10 @@ from flask_session import Session
 from dotenv import load_dotenv
 import os
 import markdown
-import shutil
+#import shutil
 
 SESSION_FILE = "flask_session"
+os.makedirs(SESSION_FILE, exist_ok=True)
 load_dotenv()
 key = os.getenv("GEMINI_API_KEY")
 app = Flask(__name__)
@@ -72,7 +73,7 @@ def clear():
 
     
 
-if __name__ == "__main__":
-    shutil.rmtree(SESSION_FILE, ignore_errors=True)
-    os.makedirs(SESSION_FILE, exist_ok=True)
-    app.run(debug=True)
+# if __name__ == "__main__":
+#     shutil.rmtree(SESSION_FILE, ignore_errors=True)
+#     os.makedirs(SESSION_FILE, exist_ok=True)
+#     app.run(debug=True)
